@@ -7,6 +7,12 @@ describe('obj', () => {
     it('Возвращает элемент блока', () => {
         expect(bnc({b: 'blockName', e: 'element'})).toBe('blockName__element');
     });
+    it('Возвращает блок + модификатор', () => {
+        expect(bnc({b: 'blockName', mod: 'modName'})).toBe('blockName blockName_modName');
+    });
+    it('Возвращает блок + модификатор(массив)', () => {
+        expect(bnc({b: 'blockName', mod: ['modName1', 'modName2']})).toBe('blockName blockName_modName1 blockName_modName2');
+    });
 
     it('Возвращает блок + модификатор', () => {
         expect(bnc({b: 'blockName', mod: 'modName'})).toBe('blockName blockName_modName');
@@ -15,7 +21,7 @@ describe('obj', () => {
         expect(bnc({b: 'blockName', e: 'element', mod: 'modName'})).toBe('blockName__element blockName__element_modName');
     });
     it('Возвращает элемент блока + модификатор(массив)', () => {
-        expect(bnc({b: 'blockName', e: 'element', mod: ['modname1', 'modname2']})).toBe('blockName__element blockName__element_modname1 blockName__element_modname2');
+        expect(bnc({b: 'blockName', e: 'element', mod: ['modName1', 'modName2']})).toBe('blockName__element blockName__element_modName1 blockName__element_modName2');
     });
 
     it('Возвращает блок + микс', () => {
@@ -24,4 +30,6 @@ describe('obj', () => {
     it('Возвращает блок + микс(массив)', () => {
         expect(bnc({b: 'blockName', mix: ['mix1', 'mix2']})).toBe('blockName mix1 mix2');
     });
+
+
 })
