@@ -32,4 +32,10 @@ describe('obj', () => {
     });
 
 
+    it('Возвращает блок + модификатор(массив) + микс', () => {
+        expect(bnc({b: 'blockName', mod: ['modName1', 'modName2'], mix: 'mix'})).toBe('blockName blockName_modName1 blockName_modName2 mix');
+    });
+    it('Возвращает элемент блока + модификатор + микс', () => {
+        expect(bnc({b: 'blockName', e: 'element', mod: 'modName', mix: 'mix'})).toBe('blockName__element blockName__element_modName mix');
+    });
 })
